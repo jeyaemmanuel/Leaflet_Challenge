@@ -65,6 +65,7 @@ d3.json(geoData_url).then(function (data) {
         }
     }).addTo(myMap);
 
+    // Add legend
     var legend = L.control({ position: 'bottomright' });
 
     legend.onAdd = function () {
@@ -80,11 +81,11 @@ d3.json(geoData_url).then(function (data) {
         }
         return div;
     };
-
     legend.addTo(myMap);
 
 });
 
+// Assign radius based on magnitude
 function chooseRadius(magnitude) {
     if (magnitude < 1) {
         return 3;
@@ -106,6 +107,7 @@ function chooseRadius(magnitude) {
     }
 }
 
+// Assign color to differentiate between magnitudes
 function chooseColor(magnitude) {
     if (magnitude < 1) {
         return "#ADFF2F";
@@ -127,7 +129,7 @@ function chooseColor(magnitude) {
     }
 }
 
-
+// Choose color for legend
 function getColor(d) {
     return d <= 1 ? '#ADFF2F' :
            d <= 2  ? '#FFF176' :
